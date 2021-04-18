@@ -18,7 +18,7 @@
         <h1>Chris' Code Quiz</h1>
         <nav>
             <ul>
-                <li id="timerLi">Timer ###</li>
+                <li id="timerLi">Timer: 60</li>
             </ul>
         </nav>
         </div>        
@@ -26,8 +26,8 @@
         
         <!-- Question Container -->
         <div>
-        <button class="start-button">Start</button>
-        <div class="gameRules">
+        <button id="startBtn" class="start-button">Start</button>
+        <div id="gameRules" class="gameRules">
             <h3>Hi Users</h3>
             <div>Today, we're going to be playing a multiple choice quiz!</div>
             <div>You are given one minute to answer all the questions</div>
@@ -36,9 +36,18 @@
             <div>So good luck and have fun!</div>
         </div>
 
-        <main id="questionForm"></main>
+        <section class="queSection">
+            <div id="question"></div>
+            <div id="answers">
+                <div class="answer" id="A" onclick="checkAnswer('A')"></div>
+                <div class="answer" id="B" onclick="checkAnswer('B')"></div>
+                <div class="answer" id="C" onclick="checkAnswer('C')"></div>
+                <div class="answer" id="D" onclick="checkAnswer('D')"></div>
+            </div>
+            <div id="questionResult"></div>
+        </section>
     </div>
-    <script href="assets/js/scripts.js" ></script>
+    <script type="text/javascript" src="./assets/js/scripts.js"></script>
     </body>
     
     <!-- Footer of the page // Scrip tags included -->

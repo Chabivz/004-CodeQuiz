@@ -4,11 +4,22 @@
     font-family: 'Times New Roman', serif;
 }
 
+/* Navigation Bar */
 .navigationBar {
     display: flex;
     padding: 20px;
     width: 100%;
+    align-items: center ;
 }
 .navigationBar nav {
     margin-left: auto;
+}
+nav ul {
+    list-style: none;
+}
+
+/* Question Section */
+
+.queSection {
+    display: none;
 }

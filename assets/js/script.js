@@ -62,8 +62,8 @@ function init() {
 
 // The startGame function is called when the start button is clicked
 function startGame() {
-  startButton.hidden = true;
-  wordBlank.hidden = true;
+  // startButton.hidden = true;
+  // wordBlank.hidden = true;
   isWin = false;
   timerCount = 75;
   // Prevents start button from being clicked when round is in progress
