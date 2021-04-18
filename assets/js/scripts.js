@@ -13,9 +13,11 @@ var answerDivC = document.querySelector("#C");
 var answerDivD = document.querySelector("#D");
 var questionContainer = document.querySelector(".queSection");
 var questionResult = document.querySelector("#questionResult");
+var score = 0;
 
 // Timer Variables 
 var quizTimer = 60;
+
 var timer;
 var count;
 var timerCount;
@@ -71,11 +73,11 @@ var questionBank = [
     }
 ];
 // Taking out the last element on array for the password function.
-var questionBankLast = questionBank.length - 1;
+var questionBankIndex = questionBank.length - 1;
 // Question Generator Function
 var questionCounter = 0;
 
-// console.log(questionBankLast);
+console.log(questionBankIndex);
 // console.log(questionBank.question);
 
 // Starting the game when the btn is clicked
@@ -123,4 +125,23 @@ function answerIsWrong() {
 }
 
 // answerIsWrong();
-answerIsCorrect();
+// answerIsCorrect();
+
+function checkAnswer(answer) {
+    if ( questionBank[questionCounter].correct == answer ) {
+        score++;
+        answerIsCorrect()
+    } else {
+        answerIsWrong();
+        // timer penalty
+    }
+    if ( questionCounter < questionBankIndex ) {
+        // if timer is still going, go to the next question.
+        questionCounter++;
+        generateQuestions();
+    } else {
+
+    }
+}
+
+checkAnswer();
