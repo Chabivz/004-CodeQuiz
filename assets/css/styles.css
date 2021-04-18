@@ -1,0 +1,14 @@
+* {
+    color: blanchedalmond;
+    background-color: dimgray;
+    font-family: 'Times New Roman', serif;
+}
+
+.navigationBar {
+    display: flex;
+    padding: 20px;
+    width: 100%;
+}
+.navigationBar nav {
+    margin-left: auto;
+}
