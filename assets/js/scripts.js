@@ -138,7 +138,7 @@ function generateQuestions() {
 generateQuestions();
 
 function answerIsCorrect() {
-    // questionResult.textContent = "Correct"
+    questionResult.textContent = "Correct"
 }
 
 function answerIsWrong() {
