@@ -1,43 +1,77 @@
-<!DOCTYPE html>
 <html>
-  <head>
-    <title>CSS Box Styling</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
-  </head>
-  <body>
-    <header>
-      <div class= "large-font">Word Guess Game</div>
-      <button class="start-button">Start</button>
-    </header>
+    <!-- Head Links -->
+    <head>
+        <title>Code Quiz</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!-- <link rel="stylesheet" href="./assets/css/style.css"> -->
+        <link rel="stylesheet" href="./assets/css/styles.css">
+    </head>
+    <!-- Header of the page -->
+    
 
-    <main>
-      <section>
-        <div class="card word-guess">
-          <div class="large-font word-blanks">J _ v _ S c r_ _t</div>
-        </div>
-      </section>
+    <body>
+        <header>
+            <title>Code Quiz</title>
+        </header>
+        <!-- Navigation bar for timer and other information -->
+        <div class="navigationBar">
+        <h1>Chris' Code Quiz</h1>
+        <nav>
+            <ul>
+                <li id="timerLi">Timer: 30</li>
+            </ul>
+        </nav>
+        </div>        
 
-      <section>
-        <div class="card results">
-          <div class = "win-loss-container">
-          <div>
-          <h2>Wins: <span class="win">0 </span> </h2>
-          <h2>Losses: <span class="lose">0</span></h2>
-        </div>
-          <button class="reset-button">Reset Score</button>
-      </div>
-          <div class= "card timer">
-            <div class = "timer-text">
-            <div class="large-font timer-count">10</div>
-            <h3>seconds remaining</h3>
-          </div>
         
-          </div>
+        <!-- Question Container -->
+    <div class="center">
+        <section>
+        <button id="startBtn" class="start-button">Start</button>
+        <div id="gameRules" class="gameRules">
+            <h3>Hi Users</h3>
+            <div>Today, we're going to be playing a multiple choice quiz!</div>
+            <div>You are given 30 seconds to answer all the questions</div>
+            <div>You will have to select the right answer, else you will be 5 seconds will be deducted to your timer.</div>
+            <div>Once the timer ends, you will prompt your initials and will be given your scores.</div>
+            <div>So good luck and have fun!</div>
         </div>
-      </section>
-    </main>
-    <script src="assets/js/script.js"></script>
-  </body>
+        </section>
+        <section class="queSection">
+            <div id="question"></div>
+            <div id="answers">
+                <div class="answer" id="A" onclick="checkAnswer('A')"></div>
+                <div class="answer" id="B" onclick="checkAnswer('B')"></div>
+                <div class="answer" id="C" onclick="checkAnswer('C')"></div>
+                <div class="answer" id="D" onclick="checkAnswer('D')"></div>
+            </div>
+            <div id="questionResult"></div>
+        </section>
+    </div>
+    
+
+
+    <section class="center" id="endQuiz">
+        <h2>All done</h2>
+        <p>Your final score is <span id="finalScore"></span></p>
+        <p>Enter initials: <input type="text" id="initialTxt" /> <button id="initialSubmit">Submit</button></p>
+        
+    </section>
+
+
+    <section class="center" id="scoreList">
+        <div id="retakeBtn" >Retake the Quiz</div>
+        
+    </section>
+    <script type="text/javascript" src="./assets/js/scripts.js"></script>
+    <footer>
+            <!-- Just the footer -->
+    </footer>
+    </body>
+    
+    <!-- Footer of the page // Scrip tags included -->
+
+   
+    
 </html>

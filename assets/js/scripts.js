@@ -16,6 +16,10 @@ var questionResult = document.querySelector("#questionResult");
 var score = 0;
 var endQuizEl = document.querySelector("#endQuiz");
 var initialSubmitEl = document.querySelector("#initialSubmit");
+let scoreListEl = document.querySelector('#scoreList'); 
+let finalScoreEl = document.querySelector('#finalScore');
+let retakeBtnEl = document.querySelector('#retakeBtn');
+
 
 
 // Timer Variables 
@@ -23,7 +27,7 @@ var initialSubmitEl = document.querySelector("#initialSubmit");
 
 var timer;
 var count;
-var timerCount = 60;
+var timerCount = 30;
 // Question Variables 
 var questionBank = [
     {
@@ -73,7 +77,24 @@ var questionBank = [
         answerC: "Property does not exist.",
         answerD: "All of the above",
         correct: "D"
+    },
+    {
+        question: "How do we make a rounded corner by using CSS?",
+        answerA: "border-radius",
+        answerB: "radius-border",
+        answerC: "radius",
+        answerD: "border",
+        correct: "A"
+    },
+    {
+        question: "Which of the following property serves as shorthand for the padding properties?",
+        answerA: "padding",
+        answerB: "padding-top",
+        answerC: "padding-left",
+        answerD: "padding-right",
+        correct: "A"
     }
+
 ];
 // Taking out the last element on array for the password function.
 var questionBankIndex = questionBank.length - 1;
@@ -92,8 +113,13 @@ function startGame() {
     gameRulesDiv.style.display = "none";
     startBtn.style.display = "none";
     questionContainer.style.display = "block";
+    scoreListEl.style.display = "none";
+    endQuizEl.style.display = "none";
     // start timer by calling timer function
+    timerCount = 30;
+    questionCounter = 0;
     startTimer();
+    
     
 }
 
@@ -130,6 +156,7 @@ function checkAnswer(answer) {
     } else {
         answerIsWrong();
         // timer penalty
+        timerCount = timerCount - 5;
     }
     // if there are still questions needed to be answered go to the next one, Else get initials and display score score.
     if ( questionCounter < questionBankIndex ) {
@@ -149,10 +176,6 @@ function checkAnswer(answer) {
     }
 }
 
-// Timer funciton
-
-
-
 
 // Timer Function 
 function startTimer() {
@@ -163,7 +186,7 @@ function startTimer() {
 
 function clockTick() {
     timerCount--;
-    timerLi.textContent = timerCount;
+    timerLi.textContent = (" Time Remaining: " + timerCount);
     if ( timerCount <= 0 )  {
         // end quiz function
         endQuiz();
@@ -177,6 +200,7 @@ function endQuiz() {
     clearInterval(timer);
     endQuizEl.style.display = "block";
     questionContainer.style.display = "none";
+    finalScoreEl.textContent = score;
 
 
 }
@@ -193,8 +217,23 @@ function saveHighScores() {
     localStorage.setItem('highScores',JSON.stringify(highScores));
     // 
     // scoresection
-    
-
+    scoreListEl.style.display = "block";
+    // scoreBoard();
 }
 
 initialSubmitEl.onclick = saveHighScores;
+retakeBtnEl.onclick = startGame;
+
+// function scoreBoard() {
+//     let scoreDB = JSON.stringify(newScore);
+//     let myObj = "";
+//     let xmlhttp = new XMLHttpRequest();
+//     xmlhttp.onreadystatechange = function() {
+//         if (this.readyState == 4)
+//         let myObj = json.parse
+//     }
+
+//     for (var x = 0 ; x <= newScore.length ; x++) {
+
+//     }
+// }

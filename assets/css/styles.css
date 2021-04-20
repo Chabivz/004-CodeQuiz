@@ -2,23 +2,42 @@
     color: blanchedalmond;
     background-color: dimgray;
     font-family: 'Times New Roman', serif;
+    /* border-style: dotted; */
 }
 
 /* Navigation Bar */
 .navigationBar {
     display: flex;
-    padding: 20px;
+    /* padding: 20px; */
     width: 100%;
-    align-items: center ;
+    align-items: center;
+    text-align: center;
 }
+.navigationBar h1 {
+    padding-left: 30px;
+}
+
+
 .navigationBar nav {
     margin-left: auto;
 }
 nav ul {
     list-style: none;
+    padding-right: 30px;
 }
 
 /* Question Section */
+
+button {
+    height: 50px;
+    width: 150px;
+    font-size: 35px;
+    background-color: chocolate;
+}
+
+section {
+    font-size: 35px;
+}
 
 .queSection {
     display: none;
@@ -30,4 +49,23 @@ nav ul {
 
 #scoreList {
     display: none;
+}
+
+.center {
+    text-align: center;
+    width: 100%;
+}
+
+#question {
+    padding: 10px;
+    font-size: 35px;
+}
+
+.answer {
+    width:;
+    padding: 10px;
+    font-size: 1.5rem;
+    /* background-color: burlywood; */
+
+    /* color: black; */
 }
