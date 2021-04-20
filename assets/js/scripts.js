@@ -14,13 +14,16 @@ var answerDivD = document.querySelector("#D");
 var questionContainer = document.querySelector(".queSection");
 var questionResult = document.querySelector("#questionResult");
 var score = 0;
+var endQuizEl = document.querySelector("#endQuiz");
+var initialSubmitEl = document.querySelector("#initialSubmit");
+
 
 // Timer Variables 
-var quizTimer = 60;
+
 
 var timer;
 var count;
-var timerCount;
+var timerCount = 60;
 // Question Variables 
 var questionBank = [
     {
@@ -84,24 +87,16 @@ console.log(questionBankIndex);
 startBtn.addEventListener("click", startGame);
 
 function startGame() {
+    questionCounter = 0;
     console.log("Game Started");
     gameRulesDiv.style.display = "none";
     startBtn.style.display = "none";
     questionContainer.style.display = "block";
+    // start timer by calling timer function
+    startTimer();
     
 }
 
-
-// Timer Function 
-function startTimer() {
-    timer = setInterval(function () {
-        timerCount--;
-       timerLi.textConent = timerCount;
-       if (timerCount >= 0 ) {
-        // Test if user got the answer wrong
-       }
-    })
-}
 
 // Question and Selection will be shown once the button is clicked.
 
@@ -117,7 +112,7 @@ function generateQuestions() {
 generateQuestions();
 
 function answerIsCorrect() {
-    questionResult.textContent = "Correct"
+    // questionResult.textContent = "Correct"
 }
 
 function answerIsWrong() {
@@ -129,19 +124,77 @@ function answerIsWrong() {
 
 function checkAnswer(answer) {
     if ( questionBank[questionCounter].correct == answer ) {
-        score++;
+        score++;        
         answerIsCorrect()
+
     } else {
         answerIsWrong();
         // timer penalty
     }
+    // if there are still questions needed to be answered go to the next one, Else get initials and display score score.
     if ( questionCounter < questionBankIndex ) {
         // if timer is still going, go to the next question.
         questionCounter++;
         generateQuestions();
     } else {
 
+        endQuiz()
+        // Reset the ti
+        // var initials = window.prompt("What is your initial");
+        // window.confirm("Hi " + initials + ", your score is " +score);
+        // gameRulesDiv.style.display = "block";
+        // startBtn.style.display = "block";
+        // questionContainer.style.display = "none";
+        
     }
 }
 
-checkAnswer();
+// Timer funciton
+
+
+
+
+// Timer Function 
+function startTimer() {
+    timer = setInterval(clockTick, 1000);
+
+}
+
+
+function clockTick() {
+    timerCount--;
+    timerLi.textContent = timerCount;
+    if ( timerCount <= 0 )  {
+        // end quiz function
+        endQuiz();
+    } 
+
+
+}
+
+function endQuiz() {
+
+    clearInterval(timer);
+    endQuizEl.style.display = "block";
+    questionContainer.style.display = "none";
+
+
+}
+
+
+function saveHighScores() {
+    let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+    let initialsEl = document.querySelector("#initialTxt");
+    let newScore = {
+        score: score,
+        initials: initialsEl.value.trim()
+    };
+    highScores.push(newScore);
+    localStorage.setItem('highScores',JSON.stringify(highScores));
+    // 
+    // scoresection
+    
+
+}
+
+initialSubmitEl.onclick = saveHighScores;

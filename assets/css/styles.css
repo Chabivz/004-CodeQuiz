@@ -23,3 +23,11 @@ nav ul {
 .queSection {
     display: none;
 }
+
+#endQuiz {
+    display: none;
+}
+
+#scoreList {
+    display: none;
+}
